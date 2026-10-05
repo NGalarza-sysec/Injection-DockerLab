@@ -1,4 +1,4 @@
-Injection
+Injection-Lab
 
 # Reporte de Explotación | Writeup: Inyección SQL a Escalada de Privilegios SUID.
 
