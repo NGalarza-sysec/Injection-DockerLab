@@ -24,7 +24,7 @@ El objetivo es identificar servicios expuestos, explotar fallos de configuració
 >nmap 172.17.0.2
 >```
 >
->![](Injection/Imagenes/IMG-1.png)
+>![](Imagenes/IMG-1.png)
 >
 >### Resultado
 >Puerto Abiertos:
@@ -40,11 +40,11 @@ El objetivo es identificar servicios expuestos, explotar fallos de configuració
 >Inspección del Código Fuente (Ctrl + U)
 >Analizando el código HTML mediante la búsqueda de etiquetas del formulario, se identificó el parámetro exacto esperado por el backend PHP:
 >
->![](Injection/Imagenes/IMG-2.png)
+>![](Imagenes/IMG-2.png)
 >
 >(Usamos el comando Ctrl+U para ver el Codigo. Iniciamos una busqueda con Ctrl+F con las palabras claves admin, user, users, script y obtuvimos el siguiente detalle en el codigo)
 >
->![](Injection/Imagenes/IMG-3.png)
+>![](Imagenes/IMG-3.png)
 >
 >### Por qué es importante este hallazgo
 >Conocer el nombre exacto de la variable (name, en lugar de username o user) permite construir peticiones HTTP POST precisas y evaluar de manera efectiva la lógica del formulario.
@@ -69,7 +69,7 @@ El objetivo es identificar servicios expuestos, explotar fallos de configuració
 >
 >**En cada intento de sesion nos devolvio `Wrong Credentials`.**
 >
->![](Injection/Imagenes/IMG-4.png)
+>![](Imagenes/IMG-4.png)
 
 ## 4. Explotación de Inyección SQL (Authentication Bypass)
 >[!NOTE]
@@ -95,7 +95,7 @@ El objetivo es identificar servicios expuestos, explotar fallos de configuració
 >
 >* **Contraseña / Clave expuesta:** `KJSDFG789FGSDF78`
 >
->![](Injection/Imagenes/IMG-5.png)
+>![](Imagenes/IMG-5.png)
 
 ## 5. Acceso Inicial al Sistema mediante SSH
 >[!NOTE]
@@ -110,7 +110,7 @@ El objetivo es identificar servicios expuestos, explotar fallos de configuració
 >ssh-keygen -f '/home/kali/.ssh/known_hosts' -R '172.17.0.2'
 >```
 >
->![](Injection/Imagenes/IMG-7.png)
+>![](Imagenes/IMG-7.png)
 >
 >**Posteriormente, se volvió a iniciar la sesión y se aceptó la nueva huella digital (fingerprint) confirmando con `yes`:**
 >
@@ -118,7 +118,7 @@ El objetivo es identificar servicios expuestos, explotar fallos de configuració
 >
 >* **Resultado:** Acceso exitoso como usuario `dylan` en el sistema (Ubuntu 22.04 LTS).
 >
->![](Injection/Imagenes/IMG-6.png)
+>![](Imagenes/IMG-6.png)
 
 ## 6. Reconocimiento y Escalada de Privilegios
 >[!NOTE]
@@ -127,7 +127,7 @@ El objetivo es identificar servicios expuestos, explotar fallos de configuració
 >### Identificación de Permisos Inseguros
 >Se intentó listar las reglas de `sudo` del usuario con `sudo -l`, pero el binario no se encontraba instalado en el sistema.
 >
->![](Injection/Imagenes/IMG-8.png)
+>![](Imagenes/IMG-8.png)
 >
 >Posteriormente, se realizó una búsqueda de archivos ejecutable con el bit **SUID** (`Set User ID`) activado mediante el siguiente comando:
 >
@@ -135,7 +135,7 @@ El objetivo es identificar servicios expuestos, explotar fallos de configuració
 >find / -perm -4000 -ls 2>/dev/null
 >```
 >
->![](Injection/Imagenes/IMG-9.png)
+>![](Imagenes/IMG-9.png)
 >
 >### Análisis de Permisos SUID
 >
@@ -169,7 +169,7 @@ El objetivo es identificar servicios expuestos, explotar fallos de configuració
 >root
 >```
 > 
->![](Injection/Imagenes/IMG-10.png)
+>![](Imagenes/IMG-10.png)
 
 ## 8. Recomendaciones de Mitigación
 >[!WARNING]
