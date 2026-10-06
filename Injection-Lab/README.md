@@ -6,9 +6,8 @@ El presente documento detalla el proceso de análisis de vulnerabilidades y prue
 
 El objetivo es identificar servicios expuestos, explotar fallos de configuración o vulnerabilidades de software, y escalar privilegios hasta obtener acceso total como el usuario administrador (`root`).
 
-- **Atacante (Host):** `kali` (`172.17.0.1` / Red Local Docker)
-- **Víctima (Target):** `172.17.0.2` (Contenedor Ubuntu 22.04 LTS)
-- **Servicios Expuestos:** SSH (`22/tcp`), Web HTTP (`80/tcp`)
+- **Curso:** [Ciberseguridad BIOS]
+- **Auditoria:** [NGalarza-sysec]
 - **Vulnerabilidades Explotadas:** 
 
   **1.** Inyección SQL (Authentication Bypass en formulario Web).
