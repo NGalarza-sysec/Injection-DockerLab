@@ -10,10 +10,8 @@ El objetivo es identificar servicios expuestos, explotar fallos de configuració
 - **Auditoria:** [NGalarza-sysec]
 - **Objetivo de Evaluación:** Máquina Injection (IP: 172.17.0.2)
 - **Vulnerabilidades Explotadas:** 
-
-  **1.** Inyección SQL (Authentication Bypass en formulario Web).
-  
-  **2.** Escalada de Privilegios mediante Binario SUID Inseguro (`/usr/bin/env`).
+1. Inyección SQL (Authentication Bypass en formulario Web).
+2. Escalada de Privilegios mediante Binario SUID Inseguro (`/usr/bin/env`).
 
 
 ## 1. Escaneo con Nmap
